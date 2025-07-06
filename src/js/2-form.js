@@ -1,29 +1,32 @@
-const formData = {
-    email: '',
-    message: ''
-};
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <a class="back-link" href="./index.html">Go back</a>
+        <h1 class="main-title">Form</h1>
+      </div>
 
-const form = document.querySelector('.feedback-form');
+      <form class="feedback-form" autocomplete="off">
+        <label class="input-label">
+          Email
+          <input type="email" name="email" autofocus class="input-area" />
+        </label>
+        <label class="input-label">
+          Message
+          <textarea name="message" rows="8" class="text-area"></textarea>
+        </label>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </main>
 
-form.addEventListener('input', function (event) {
-    const target = event.target;
-    if (target.name === 'email' || target.name === 'message') {
-        formData[target.name] = target.value.trim();
-    }
-
-    localStorage.setItem("feedback-form-state", JSON.stringify(formData));
-    console.log(formData);
-});
-
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    if (!formData.email || !formData.message) {
-        alert("Fill please all fields");
-        return;
-    }
-
-    localStorage.removeItem("feedback-form-state");
-    formData.email = '';
-    formData.message = '';
-    form.reset();
-});
+    <script type="module" src="./js/2-form.js"></script>
+  </body>
+</html>
